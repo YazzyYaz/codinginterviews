@@ -1,4 +1,13 @@
 # https://www.geeksforgeeks.org/python-program-for-reverse-a-linked-list/
+def reverse_list(head):
+    prev = None
+    while head:
+        curr = head
+        head = head.next
+        curr.next = prev
+        prev = curr
+    return prev
+
 
 def reverse_linked_list(ll):
     prev = None
