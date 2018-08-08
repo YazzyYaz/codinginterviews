@@ -24,7 +24,15 @@ class Deck(object):
                 special_list.append(card)
             deck_of_suits += special_list
         return deck_of_suits
-        
+
+    def shuffle(self):
+        for index in range(len(self.cards) - 1):
+            rand = random.randint(0, len(self.cards)-1)
+            self.cards[index], self.cards[rand] = self.cards[rand], self.cards[index]
+
+    def draw(self):
+        return self.cards.pop()
+
 
 class Suit(object):
     def __init__(self, suit_type):
@@ -54,9 +62,18 @@ class Card(object):
     def get_card_value(self):
         return "Card Suit: {}, Card Value: {}".format(self.suit, self.value)
 
+
+
+
 special_cards = True
 deck_of_cards = Deck(special_cards)
-full_deck = deck_of_cards.get_cards()
-card = random.choice(full_deck)
+
+#full_deck = deck_of_cards.get_cards()
+deck_of_cards.shuffle()
+deck_of_cards.shuffle()
+#full_deck = deck_of_cards.get_cards()
+#card = random.choice(full_deck)
+#full_deck.shuffle()
+card = deck_of_cards.draw()
 print(card.suit)
 print(card.value)
